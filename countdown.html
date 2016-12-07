@@ -8,7 +8,45 @@
 
 			<script type="text/javascript">
 				var now = Date.now(); 
-				console.log(now);
+				console.log(now/1000);
+
+				var christmasDay = new Date("December 25,2016 00:00").getTime(); 
+				console.log(christmasDay/1000);
+
+				var secondsTillChristmas = Math.floor((christmasDay - now)/1000); 
+				console.log(secondsTillChristmas);
+
+				var minutesTillChristmas = secondsTillChristmas / 60; 
+				console.log(minutesTillChristmas); 
+
+				var hoursTillChristmas = minutesTillChristmas / 60; 
+				console.log(hoursTillChristmas);
+
+				var daysTillChristmas = hoursTillChristmas / 24; 
+				console.log(daysTillChristmas);
+
+				var timerDiv = document.getElementById("timer"); 
+				timerDiv.innerHTML = secondsTillChristmas + " seconds till Christmas"; 
+
+				// 1. Update the counter each new second. 
+				// 2. Recalculate the new distance between and now and Christmas 
+				// 3. After recalculating, update the HTML with new number 
+
+				// setInterval(FUNCTION TO RUN, HOW OFTEN IN MILLISECONDs)
+
+				setInterval(updateCounter, 1000); 
+
+				function updateCounter(){
+					// get the new timestamp
+					var now = Date.now(); 
+					var newSecondsTillChristmas = (christmasDay - now) / 1000; 
+					timerDiv.innerHTML = Math.floor(newSecondsTillChristmas) + " seconds till Christmas"; 
+					
+				}
+
+
+
+				console.dir(timerDiv);
 			</script>
 		</body>
 	</html>
